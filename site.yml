@@ -1,0 +1,38 @@
+- hosts: all
+  become: true
+  pre_tasks:
+  
+  - name: install updates
+    tags: always
+    yum:
+      update_only: yes
+      update_cache: yes
+  
+- hosts: web_server
+  become: true
+  tasks:
+
+  - name: install apache package
+    tags: apache
+    yum:
+      name:
+        - httpd
+        - php
+      state: latest
+  - name: file copy to web server
+    tags: apache
+    copy:
+      src: abc.html
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
+      mode: 0644
+- hosts: db_server
+  become: true
+  tasks:
+
+  - name: database installation
+    tags: db
+    yum:
+      name: mariadb-server
+      state: latest
