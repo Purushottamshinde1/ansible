@@ -1,0 +1,5 @@
+- name: database installation
+  tags: db
+  yum:
+    name: mariadb-server
+    state: latest

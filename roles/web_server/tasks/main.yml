@@ -1,0 +1,13 @@
+- name: install apache package
+  tags: apache
+  yum:
+    name:
+      - httpd
+      - php
+    state: latest
+- name: service start
+  tags: httpd 
+  service:
+    name: httpd
+    state: started
+    enabled: yes  
