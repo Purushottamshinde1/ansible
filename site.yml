@@ -19,6 +19,12 @@
         - httpd
         - php
       state: latest
+  - name: service start
+    tags: httpd 
+    service:
+      name: httpd
+      state: started
+      enabled: yes  
   - name: file copy to web server
     tags: apache
     copy:
