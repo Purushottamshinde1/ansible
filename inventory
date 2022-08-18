@@ -1,1 +1,5 @@
-172.31.83.114 apache_package=httpd php_package=php
+[web_server]
+172.31.83.114 
+
+[db_server]
+172.31.30.63
